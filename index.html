@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Joblish - Free Career Tools for Job Seekers</title>
+
+  <meta
+    name="description"
+    content="Joblish provides free career tools, salary calculators, resume resources, interview preparation and practical job guides for job seekers."
+  >
+
+  <meta
+    name="keywords"
+    content="career tools, job tools, salary calculator, CTC calculator, resume tools, interview preparation, job seekers"
+  >
+
+  <meta name="author" content="Joblish">
+
+  <meta property="og:title" content="Joblish - Free Career Tools">
+  <meta
+    property="og:description"
+    content="Free tools and resources to help you find, prepare for and grow in your career."
+  >
+  <meta property="og:type" content="website">
+
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --text: #111827;
+      --muted: #64748b;
+      --background: #f8fafc;
+      --card: #ffffff;
+      --border: #e2e8f0;
+      --soft-blue: #eff6ff;
+      --dark: #0f172a;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Arial,
+        sans-serif;
+      background: var(--background);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      width: min(1120px, 92%);
+      margin: 0 auto;
+    }
+
+    /* Header */
+
+    header {
+      background: rgba(255, 255, 255, 0.96);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(10px);
+    }
+
+    .nav {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 23px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+
+    .logo-mark {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      border-radius: 11px;
+      background: var(--primary);
+      color: white;
+      font-size: 18px;
+      font-weight: 800;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 24px;
+    }
+
+    nav a {
+      color: #475569;
+      font-size: 15px;
+      font-weight: 600;
+    }
+
+    nav a:hover {
+      color: var(--primary);
+    }
+
+    .nav-button {
+      background: var(--primary);
+      color: white !important;
+      padding: 10px 16px;
+      border-radius: 9px;
+    }
+
+    .nav-button:hover {
+      background: var(--primary-dark);
+    }
+
+    /* Hero */
+
+    .hero {
+      padding: 85px 0 70px;
+      background:
+        radial-gradient(
+          circle at top right,
+          rgba(37, 99, 235, 0.12),
+          transparent 35%
+        ),
+        linear-gradient(#ffffff, #f8fafc);
+    }
+
+    .hero-content {
+      max-width: 820px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .badge {
+      display: inline-block;
+      background: var(--soft-blue);
+      color: var(--primary-dark);
+      border: 1px solid #dbeafe;
+      padding: 7px 13px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-size: clamp(40px, 7vw, 68px);
+      line-height: 1.05;
+      letter-spacing: -2.5px;
+      margin-bottom: 22px;
+      color: var(--dark);
+    }
+
+    .hero h1 span {
+      color: var(--primary);
+    }
+
+    .hero p {
+      max-width: 680px;
+      margin: 0 auto 30px;
+      color: var(--muted);
+      font-size: 18px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 13px 20px;
+      border-radius: 10px;
+      font-weight: 700;
+      font-size: 15px;
+      transition: 0.2s ease;
+    }
+
+    .button-primary {
+      background: var(--primary);
+      color: white;
+    }
+
+    .button-primary:hover {
+      background: var(--primary-dark);
+      transform: translateY(-1px);
+    }
+
+    .button-secondary {
+      background: white;
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+
+    .button-secondary:hover {
+      border-color: #94a3b8;
+    }
+
+    /* Stats */
+
+    .stats {
+      margin-top: 45px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border: 1px solid var(--border);
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.04);
+    }
+
+    .stat {
+      padding: 23px 15px;
+      text-align: center;
+    }
+
+    .stat + .stat {
+      border-left: 1px solid var(--border);
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 24px;
+      color: var(--dark);
+    }
+
+    .stat span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    /* Sections */
+
+    section {
+      padding: 75px 0;
+    }
+
+    .section-heading {
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto 38px;
+    }
+
+    .section-heading h2 {
+      font-size: 34px;
+      letter-spacing: -1px;
+      margin-bottom: 10px;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+    }
+
+    /* Cards */
+
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .tool-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 24px;
+      transition: 0.2s ease;
+    }
+
+    .tool-card:hover {
+      transform: translateY(-4px);
+      border-color: #bfdbfe;
+      box-shadow: 0 14px 30px rgba(15, 23, 42, 0.07);
+    }
+
+    .icon {
+      width: 45px;
+      height: 45px;
+      display: grid;
+      place-items: center;
+      border-radius: 12px;
+      background: var(--soft-blue);
+      color: var(--primary);
+      font-size: 20px;
+      margin-bottom: 18px;
+      font-weight: 800;
+    }
+
+    .tool-card h3 {
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+
+    .tool-card p {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 17px;
+    }
+
+    .tool-link {
+      color: var(--primary);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    /* Categories */
+
+    .categories {
+      background: white;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
+    }
+
+    .category {
+      padding: 20px;
+      background: var(--background);
+      border: 1px solid var(--border);
+      border-radius: 13px;
+      text-align: center;
+    }
+
+    .category strong {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .category span {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    /* CTA */
+
+    .cta {
+      padding: 45px;
+      border-radius: 22px;
+      background: var(--dark);
+      color: white;
+      text-align: center;
+    }
+
+    .cta h2 {
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+
+    .cta p {
+      color: #cbd5e1;
+      margin-bottom: 24px;
+    }
+
+    /* Footer */
+
+    footer {
+      background: #020617;
+      color: white;
+      padding: 50px 0 25px;
+      margin-top: 20px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+
+    .footer-brand p {
+      color: #94a3b8;
+      max-width: 420px;
+      margin-top: 13px;
+      font-size: 14px;
+    }
+
+    footer h4 {
+      margin-bottom: 13px;
+      font-size: 14px;
+    }
+
+    footer a {
+      display: block;
+      color: #94a3b8;
+      font-size: 14px;
+      margin-bottom: 8px;
+    }
+
+    footer a:hover {
+      color: white;
+    }
+
+    .copyright {
+      border-top: 1px solid #1e293b;
+      padding-top: 20px;
+      color: #64748b;
+      font-size: 13px;
+    }
+
+    /* Responsive */
+
+    @media (max-width: 850px) {
+      nav {
+        gap: 12px;
+      }
+
+      nav a:not(.nav-button) {
+        display: none;
+      }
+
+      .tools-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .category-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .hero {
+        padding-top: 60px;
+      }
+
+      .hero h1 {
+        letter-spacing: -1.5px;
+      }
+
+      .hero p {
+        font-size: 16px;
+      }
+
+      .stats {
+        grid-template-columns: 1fr;
+      }
+
+      .stat + .stat {
+        border-left: none;
+        border-top: 1px solid var(--border);
+      }
+
+      .tools-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .category-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .cta {
+        padding: 32px 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="container nav">
+
+      <a href="#" class="logo">
+        <div class="logo-mark">J</div>
+        <span>Joblish</span>
+      </a>
+
+      <nav>
+        <a href="#tools">Tools</a>
+        <a href="#categories">Categories</a>
+        <a href="#guides">Guides</a>
+        <a href="#tools" class="nav-button">Explore Tools</a>
+      </nav>
+
+    </div>
+  </header>
+
+
+  <!-- HERO -->
+  <main>
+
+    <section class="hero">
+      <div class="container">
+
+        <div class="hero-content">
+
+          <div class="badge">
+            Free career resources
+          </div>
+
+          <h1>
+            Make your next
+            <span>career move</span>
+            smarter.
+          </h1>
+
+          <p>
+            Free tools, calculators and practical resources to help you
+            understand salaries, prepare for interviews, improve your resume
+            and make better career decisions.
+          </p>
+
+          <div class="hero-buttons">
+            <a href="#tools" class="button button-primary">
+              Explore Free Tools
+            </a>
+
+            <a href="#guides" class="button button-secondary">
+              Career Guides
+            </a>
+          </div>
+
+          <div class="stats">
+            <div class="stat">
+              <strong>100%</strong>
+              <span>Free to use</span>
+            </div>
+
+            <div class="stat">
+              <strong>Simple</strong>
+              <span>Easy-to-understand tools</span>
+            </div>
+
+            <div class="stat">
+              <strong>Practical</strong>
+              <span>Built for real job seekers</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- TOOLS -->
+    <section id="tools">
+
+      <div class="container">
+
+        <div class="section-heading">
+          <h2>Popular Career Tools</h2>
+          <p>
+            Useful tools for salaries, resumes, interviews and job hunting.
+          </p>
+        </div>
+
+
+        <div class="tools-grid">
+
+          <div class="tool-card">
+            <div class="icon">₹</div>
+            <h3>CTC to In-Hand Calculator</h3>
+            <p>
+              Estimate your monthly take-home salary from your annual CTC.
+            </p>
+            <a href="#" class="tool-link">
+              Coming soon →
+            </a>
+          </div>
+
+
+          <div class="tool-card">
+            <div class="icon">%</div>
+            <h3>Salary Hike Calculator</h3>
+            <p>
+              Calculate your new salary after a percentage increment.
+            </p>
+            <a href="#" class="tool-link">
+              Coming soon →
+            </a>
+          </div>
+
+
+          <div class="tool-card">
+            <div class="icon">CV</div>
+            <h3>Resume Keyword Checker</h3>
+            <p>
+              Find important keywords that may be missing from your resume.
+            </p>
+            <a href="#" class="tool-link">
+              Coming soon →
+            </a>
+          </div>
+
+
+          <div class="tool-card">
+            <div class="icon">?</div>
+            <h3>Interview Question Generator</h3>
+            <p>
+              Prepare for interviews with questions based on your target role.
+            </p>
+            <a href="#" class="tool-link">
+              Coming soon →
+            </a>
+          </div>
+
+
+          <div class="tool-card">
+            <div class="icon">D</div>
+            <h3>Notice Period Calculator</h3>
+            <p>
+              Calculate your expected last working day from your resignation date.
+            </p>
+            <a href="#" class="tool-link">
+              Coming soon →
+            </a>
+          </div>
+
+
+          <div class="tool-card">
+            <div class="icon">⌁</div>
+            <h3>Experience Calculator</h3>
+            <p>
+              Quickly calculate total professional experience between dates.
+            </p>
+            <a href="#" class="tool-link">
+              Coming soon →
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- CATEGORIES -->
+    <section id="categories" class="categories">
+
+      <div class="container">
+
+        <div class="section-heading">
+          <h2>Explore Career Topics</h2>
+          <p>
+            Start with a topic that matches your current career goal.
+          </p>
+        </div>
+
+
+        <div class="category-grid">
+
+          <div class="category">
+            <strong>💰 Salary</strong>
+            <span>CTC, salary and compensation</span>
+          </div>
+
+          <div class="category">
+            <strong>📄 Resume</strong>
+            <span>Resume and application help</span>
+          </div>
+
+          <div class="category">
+            <strong>🎯 Interviews</strong>
+            <span>Questions and preparation</span>
+          </div>
+
+          <div class="category">
+            <strong>📈 Career Growth</strong>
+            <span>Skills and career planning</span>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- GUIDES -->
+    <section id="guides">
+
+      <div class="container">
+
+        <div class="section-heading">
+          <h2>Career Guides</h2>
+          <p>
+            Clear explanations for common job and career questions.
+          </p>
+        </div>
+
+
+        <div class="tools-grid">
+
+          <div class="tool-card">
+            <div class="icon">01</div>
+            <h3>Understand Your CTC</h3>
+            <p>
+              Learn the difference between CTC, gross salary and take-home pay.
+            </p>
+            <a href="#" class="tool-link">
+              Guide coming soon →
+            </a>
+          </div>
+
+
+          <div class="tool-card">
+            <div class="icon">02</div>
+            <h3>Prepare for Interviews</h3>
+            <p>
+              Practical guidance for answering common interview questions.
+            </p>
+            <a href="#" class="tool-link">
+              Guide coming soon →
+            </a>
+          </div>
+
+
+          <div class="tool-card">
+            <div class="icon">03</div>
+            <h3>Improve Your Resume</h3>
+            <p>
+              Learn how to make your resume clearer and more relevant to a role.
+            </p>
+            <a href="#" class="tool-link">
+              Guide coming soon →
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- CTA -->
+    <section>
+
+      <div class="container">
+
+        <div class="cta">
+
+          <h2>Your career, made simpler.</h2>
+
+          <p>
+            Joblish is being built to give job seekers simple, useful and free
+            career tools.
+          </p>
+
+          <a href="#tools" class="button button-primary">
+            Explore Joblish
+          </a>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- FOOTER -->
+  <footer>
+
+    <div class="container">
+
+      <div class="footer-grid">
+
+        <div class="footer-brand">
+
+          <div class="logo">
+            <div class="logo-mark">J</div>
+            <span>Joblish</span>
+          </div>
+
+          <p>
+            Free career tools and resources designed to help job seekers make
+            smarter career decisions.
+          </p>
+
+        </div>
+
+
+        <div>
+
+          <h4>Explore</h4>
+
+          <a href="#tools">Career Tools</a>
+          <a href="#categories">Categories</a>
+          <a href="#guides">Career Guides</a>
+
+        </div>
+
+
+        <div>
+
+          <h4>Information</h4>
+
+          <a href="#">About Joblish</a>
+          <a href="#">Contact</a>
+          <a href="#">Privacy Policy</a>
+
+        </div>
+
+      </div>
+
+
+      <div class="copyright">
+        © 2026 Joblish. All rights reserved.
+      </div>
+
+    </div>
+
+  </footer>
+
+
+</body>
+</html>
