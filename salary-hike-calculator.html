@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Salary Hike Calculator India | Joblish</title>
+
+  <meta
+    name="description"
+    content="Use the free Joblish salary hike calculator to calculate your hike amount, new annual salary and new monthly salary."
+  >
+
+  <meta
+    name="keywords"
+    content="salary hike calculator, salary increment calculator, hike calculator India, salary increase calculator"
+  >
+
+  <meta name="author" content="Joblish">
+
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --text: #111827;
+      --muted: #64748b;
+      --background: #f8fafc;
+      --card: #ffffff;
+      --border: #e2e8f0;
+      --soft-blue: #eff6ff;
+      --dark: #0f172a;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Arial,
+        sans-serif;
+      background: var(--background);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      width: min(1100px, 92%);
+      margin: 0 auto;
+    }
+
+    /* Header */
+
+    header {
+      background: rgba(255, 255, 255, 0.97);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(10px);
+    }
+
+    .nav {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 23px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+
+    .logo-mark {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      border-radius: 11px;
+      background: var(--primary);
+      color: white;
+      font-weight: 800;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+    }
+
+    nav a {
+      font-size: 15px;
+      font-weight: 600;
+      color: #475569;
+    }
+
+    nav a:hover {
+      color: var(--primary);
+    }
+
+    /* Main */
+
+    .page {
+      padding: 55px 0 80px;
+    }
+
+    .breadcrumb {
+      margin-bottom: 25px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .breadcrumb a {
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    .hero {
+      text-align: center;
+      max-width: 760px;
+      margin: 0 auto 45px;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 7px 13px;
+      border: 1px solid #dbeafe;
+      background: var(--soft-blue);
+      color: var(--primary-dark);
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 17px;
+    }
+
+    h1 {
+      font-size: clamp(34px, 5vw, 52px);
+      line-height: 1.08;
+      letter-spacing: -1.8px;
+      color: var(--dark);
+      margin-bottom: 15px;
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    /* Calculator */
+
+    .calculator-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+      align-items: start;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 28px;
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.05);
+    }
+
+    .card h2 {
+      font-size: 22px;
+      margin-bottom: 7px;
+    }
+
+    .card-subtitle {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 25px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      font-weight: 700;
+      font-size: 14px;
+      margin-bottom: 7px;
+    }
+
+    .input-wrapper {
+      position: relative;
+    }
+
+    .prefix {
+      position: absolute;
+      left: 13px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #64748b;
+      font-weight: 700;
+    }
+
+    input {
+      width: 100%;
+      padding: 13px 14px 13px 34px;
+      border: 1px solid #cbd5e1;
+      border-radius: 10px;
+      font-size: 15px;
+      outline: none;
+      background: white;
+      transition: 0.2s ease;
+    }
+
+    input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    }
+
+    .percent-input {
+      padding-left: 14px;
+      padding-right: 40px;
+    }
+
+    .percent-symbol {
+      position: absolute;
+      right: 14px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #64748b;
+      font-weight: 700;
+    }
+
+    .help {
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 5px;
+    }
+
+    .calculate-button {
+      width: 100%;
+      border: none;
+      background: var(--primary);
+      color: white;
+      padding: 14px 18px;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: 0.2s ease;
+      margin-top: 5px;
+    }
+
+    .calculate-button:hover {
+      background: var(--primary-dark);
+      transform: translateY(-1px);
+    }
+
+    /* Results */
+
+    .result-card {
+      background: var(--dark);
+      color: white;
+      border-radius: 18px;
+      padding: 30px;
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.12);
+    }
+
+    .result-card h2 {
+      font-size: 22px;
+      margin-bottom: 8px;
+    }
+
+    .result-card > p {
+      color: #cbd5e1;
+      font-size: 14px;
+      margin-bottom: 28px;
+    }
+
+    .main-result {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      padding: 25px;
+      margin-bottom: 22px;
+      text-align: center;
+    }
+
+    .main-result span {
+      display: block;
+      color: #cbd5e1;
+      font-size: 14px;
+      margin-bottom: 8px;
+    }
+
+    .main-result strong {
+      font-size: clamp(34px, 5vw, 48px);
+      line-height: 1;
+    }
+
+    .result-grid {
+      display: grid;
+      gap: 1px;
+      background: rgba(255, 255, 255, 0.12);
+      border-radius: 13px;
+      overflow: hidden;
+    }
+
+    .result-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      background: #111c30;
+      padding: 14px 16px;
+      font-size: 14px;
+    }
+
+    .result-row span:first-child {
+      color: #cbd5e1;
+    }
+
+    .result-row span:last-child {
+      font-weight: 700;
+      text-align: right;
+    }
+
+    /* Guide */
+
+    .info-section {
+      margin-top: 45px;
+    }
+
+    .info-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 30px;
+    }
+
+    .info-card h2 {
+      font-size: 27px;
+      margin-bottom: 14px;
+    }
+
+    .info-card h3 {
+      font-size: 19px;
+      margin: 25px 0 8px;
+    }
+
+    .info-card p {
+      color: #475569;
+      margin-bottom: 12px;
+    }
+
+    .formula {
+      background: #f1f5f9;
+      border-radius: 10px;
+      padding: 16px;
+      margin: 18px 0;
+      font-weight: 700;
+      overflow-x: auto;
+    }
+
+    ul {
+      padding-left: 20px;
+      color: #475569;
+    }
+
+    li {
+      margin-bottom: 7px;
+    }
+
+    /* Footer */
+
+    footer {
+      background: #020617;
+      color: white;
+      padding: 35px 0 22px;
+      margin-top: 60px;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .footer-content p {
+      color: #94a3b8;
+      font-size: 13px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 18px;
+    }
+
+    .footer-links a {
+      color: #94a3b8;
+      font-size: 13px;
+    }
+
+    .footer-links a:hover {
+      color: white;
+    }
+
+    /* Responsive */
+
+    @media (max-width: 800px) {
+      .calculator-layout {
+        grid-template-columns: 1fr;
+      }
+
+      nav a {
+        display: none;
+      }
+    }
+
+    @media (max-width: 500px) {
+      .card,
+      .result-card,
+      .info-card {
+        padding: 21px;
+      }
+
+      .page {
+        padding-top: 35px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+
+  <header>
+    <div class="container nav">
+
+      <a href="index.html" class="logo">
+        <div class="logo-mark">J</div>
+        <span>Joblish</span>
+      </a>
+
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="#calculator">Calculator</a>
+        <a href="#guide">Guide</a>
+      </nav>
+
+    </div>
+  </header>
+
+
+  <!-- MAIN -->
+
+  <main class="page">
+
+    <div class="container">
+
+      <div class="breadcrumb">
+        <a href="index.html">Joblish</a>
+        &nbsp;›&nbsp;
+        Salary Tools
+        &nbsp;›&nbsp;
+        Salary Hike Calculator
+      </div>
+
+
+      <!-- HERO -->
+
+      <div class="hero">
+
+        <div class="badge">
+          Free salary calculator
+        </div>
+
+        <h1>
+          Salary Hike Calculator
+        </h1>
+
+        <p>
+          Calculate your salary increase, new annual salary and new monthly
+          salary after a percentage hike.
+        </p>
+
+      </div>
+
+
+      <!-- CALCULATOR -->
+
+      <div class="calculator-layout" id="calculator">
+
+
+        <!-- INPUTS -->
+
+        <div class="card">
+
+          <h2>Enter your salary details</h2>
+
+          <p class="card-subtitle">
+            Enter your current annual salary and expected hike percentage.
+          </p>
+
+
+          <div class="form-group">
+
+            <label for="currentSalary">
+              Current Annual Salary
+            </label>
+
+            <div class="input-wrapper">
+
+              <span class="prefix">₹</span>
+
+              <input
+                id="currentSalary"
+                type="number"
+                min="0"
+                step="1000"
+                value="600000"
+                placeholder="Example: 600000"
+              >
+
+            </div>
+
+            <div class="help">
+              Example: ₹6,00,000 = ₹6 LPA
+            </div>
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="hikePercentage">
+              Salary Hike
+            </label>
+
+            <div class="input-wrapper">
+
+              <input
+                id="hikePercentage"
+                class="percent-input"
+                type="number"
+                min="0"
+                step="0.1"
+                value="20"
+                placeholder="Example: 20"
+              >
+
+              <span class="percent-symbol">%</span>
+
+            </div>
+
+            <div class="help">
+              Enter your expected or offered salary increment percentage.
+            </div>
+
+          </div>
+
+
+          <button
+            class="calculate-button"
+            onclick="calculateHike()"
+          >
+            Calculate Salary Hike
+          </button>
+
+        </div>
+
+
+        <!-- RESULTS -->
+
+        <div class="result-card">
+
+          <h2>Your new salary</h2>
+
+          <p>
+            Results update automatically based on your entered figures.
+          </p>
+
+
+          <div class="main-result">
+
+            <span>
+              New Annual Salary
+            </span>
+
+            <strong id="newAnnualSalary">
+              ₹0
+            </strong>
+
+          </div>
+
+
+          <div class="result-grid">
+
+            <div class="result-row">
+              <span>Current Annual Salary</span>
+              <span id="resultCurrentSalary">₹0</span>
+            </div>
+
+            <div class="result-row">
+              <span>Hike Percentage</span>
+              <span id="resultHike">0%</span>
+            </div>
+
+            <div class="result-row">
+              <span>Annual Hike Amount</span>
+              <span id="resultHikeAmount">₹0</span>
+            </div>
+
+            <div class="result-row">
+              <span>Current Monthly Salary</span>
+              <span id="currentMonthlySalary">₹0</span>
+            </div>
+
+            <div class="result-row">
+              <span>New Monthly Salary</span>
+              <span id="newMonthlySalary">₹0</span>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- GUIDE -->
+
+      <section class="info-section" id="guide">
+
+        <div class="info-card">
+
+          <h2>
+            How to Calculate a Salary Hike
+          </h2>
+
+          <p>
+            A salary hike is generally expressed as a percentage increase
+            over your current salary.
+          </p>
+
+          <h3>
+            Salary hike formula
+          </h3>
+
+          <div class="formula">
+            Hike Amount = Current Salary × (Hike % ÷ 100)
+          </div>
+
+          <div class="formula">
+            New Salary = Current Salary + Hike Amount
+          </div>
+
+          <h3>
+            Example
+          </h3>
+
+          <p>
+            Suppose your current annual salary is ₹6,00,000 and you receive
+            a 20% hike.
+          </p>
+
+          <div class="formula">
+            Hike Amount = ₹6,00,000 × 20% = ₹1,20,000
+          </div>
+
+          <div class="formula">
+            New Salary = ₹6,00,000 + ₹1,20,000 = ₹7,20,000
+          </div>
+
+          <h3>
+            What does a 20% hike mean?
+          </h3>
+
+          <p>
+            A 20% hike means your new annual salary is 120% of your current
+            annual salary.
+          </p>
+
+        </div>
+
+      </section>
+
+    </div>
+
+  </main>
+
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <div class="container">
+
+      <div class="footer-content">
+
+        <p>
+          © 2026 Joblish. Free career tools for job seekers.
+        </p>
+
+        <div class="footer-links">
+
+          <a href="index.html">Home</a>
+
+          <a href="index.html#tools">Tools</a>
+
+          <a href="index.html#guides">Guides</a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </footer>
+
+
+  <!-- JAVASCRIPT -->
+
+  <script>
+
+    function formatCurrency(amount) {
+
+      return new Intl.NumberFormat("en-IN", {
+        style: "currency",
+        currency: "INR",
+        maximumFractionDigits: 0
+      }).format(Math.max(0, amount));
+
+    }
+
+
+    function getNumber(id) {
+
+      const value =
+        Number(document.getElementById(id).value);
+
+      if (!Number.isFinite(value) || value < 0) {
+        return 0;
+      }
+
+      return value;
+
+    }
+
+
+    function calculateHike() {
+
+      const currentSalary =
+        getNumber("currentSalary");
+
+      const hikePercentage =
+        getNumber("hikePercentage");
+
+
+      const hikeAmount =
+        currentSalary * (hikePercentage / 100);
+
+
+      const newAnnualSalary =
+        currentSalary + hikeAmount;
+
+
+      const currentMonthlySalary =
+        currentSalary / 12;
+
+
+      const newMonthlySalary =
+        newAnnualSalary / 12;
+
+
+      document.getElementById("newAnnualSalary").textContent =
+        formatCurrency(newAnnualSalary);
+
+
+      document.getElementById("resultCurrentSalary").textContent =
+        formatCurrency(currentSalary);
+
+
+      document.getElementById("resultHike").textContent =
+        hikePercentage.toFixed(1) + "%";
+
+
+      document.getElementById("resultHikeAmount").textContent =
+        formatCurrency(hikeAmount);
+
+
+      document.getElementById("currentMonthlySalary").textContent =
+        formatCurrency(currentMonthlySalary);
+
+
+      document.getElementById("newMonthlySalary").textContent =
+        formatCurrency(newMonthlySalary);
+
+    }
+
+
+    calculateHike();
+
+
+    const inputIds = [
+      "currentSalary",
+      "hikePercentage"
+    ];
+
+
+    inputIds.forEach(function(id) {
+
+      document
+        .getElementById(id)
+        .addEventListener("input", calculateHike);
+
+    });
+
+  </script>
+
+</body>
+</html>
