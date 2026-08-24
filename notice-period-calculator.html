@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Notice Period Calculator India | Joblish</title>
+
+  <meta
+    name="description"
+    content="Use the free Joblish notice period calculator to calculate your expected last working day from your resignation date and notice period."
+  >
+
+  <meta
+    name="keywords"
+    content="notice period calculator, notice period calculator India, last working day calculator, resignation calculator"
+  >
+
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --text: #111827;
+      --muted: #64748b;
+      --background: #f8fafc;
+      --card: #ffffff;
+      --border: #e2e8f0;
+      --soft-blue: #eff6ff;
+      --dark: #0f172a;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Arial,
+        sans-serif;
+      background: var(--background);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      width: min(1100px, 92%);
+      margin: 0 auto;
+    }
+
+    header {
+      background: rgba(255, 255, 255, 0.97);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav {
+      min-height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 23px;
+      font-weight: 800;
+    }
+
+    .logo-mark {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      border-radius: 11px;
+      background: var(--primary);
+      color: white;
+      font-weight: 800;
+    }
+
+    nav {
+      display: flex;
+      gap: 22px;
+    }
+
+    nav a {
+      font-size: 15px;
+      font-weight: 600;
+      color: #475569;
+    }
+
+    .page {
+      padding: 55px 0 80px;
+    }
+
+    .breadcrumb {
+      margin-bottom: 25px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .breadcrumb a {
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    .hero {
+      max-width: 760px;
+      margin: 0 auto 45px;
+      text-align: center;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 7px 13px;
+      border: 1px solid #dbeafe;
+      background: var(--soft-blue);
+      color: var(--primary-dark);
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 17px;
+    }
+
+    h1 {
+      font-size: clamp(34px, 5vw, 52px);
+      line-height: 1.08;
+      letter-spacing: -1.8px;
+      color: var(--dark);
+      margin-bottom: 15px;
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    .calculator-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+      align-items: start;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 28px;
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.05);
+    }
+
+    .card h2 {
+      font-size: 22px;
+      margin-bottom: 7px;
+    }
+
+    .card-subtitle {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 25px;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      font-weight: 700;
+      font-size: 14px;
+      margin-bottom: 7px;
+    }
+
+    input {
+      width: 100%;
+      padding: 13px 14px;
+      border: 1px solid #cbd5e1;
+      border-radius: 10px;
+      font-size: 15px;
+      outline: none;
+      background: white;
+    }
+
+    input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    }
+
+    .help {
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 5px;
+    }
+
+    .calculate-button {
+      width: 100%;
+      border: none;
+      background: var(--primary);
+      color: white;
+      padding: 14px 18px;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: 800;
+      cursor: pointer;
+      margin-top: 5px;
+    }
+
+    .calculate-button:hover {
+      background: var(--primary-dark);
+    }
+
+    .result-card {
+      background: var(--dark);
+      color: white;
+      border-radius: 18px;
+      padding: 30px;
+    }
+
+    .result-card h2 {
+      font-size: 22px;
+      margin-bottom: 8px;
+    }
+
+    .result-card > p {
+      color: #cbd5e1;
+      font-size: 14px;
+      margin-bottom: 28px;
+    }
+
+    .main-result {
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 15px;
+      padding: 25px;
+      margin-bottom: 22px;
+      text-align: center;
+    }
+
+    .main-result span {
+      display: block;
+      color: #cbd5e1;
+      font-size: 14px;
+      margin-bottom: 8px;
+    }
+
+    .main-result strong {
+      font-size: clamp(30px, 5vw, 46px);
+      line-height: 1;
+    }
+
+    .result-grid {
+      display: grid;
+      gap: 1px;
+      background: rgba(255, 255, 255, 0.12);
+      border-radius: 13px;
+      overflow: hidden;
+    }
+
+    .result-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      background: #111c30;
+      padding: 14px 16px;
+      font-size: 14px;
+    }
+
+    .result-row span:first-child {
+      color: #cbd5e1;
+    }
+
+    .result-row span:last-child {
+      font-weight: 700;
+      text-align: right;
+    }
+
+    .info-section {
+      margin-top: 45px;
+    }
+
+    .info-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 30px;
+    }
+
+    .info-card h2 {
+      font-size: 27px;
+      margin-bottom: 14px;
+    }
+
+    .info-card h3 {
+      font-size: 19px;
+      margin: 25px 0 8px;
+    }
+
+    .info-card p {
+      color: #475569;
+      margin-bottom: 12px;
+    }
+
+    .formula {
+      background: #f1f5f9;
+      border-radius: 10px;
+      padding: 16px;
+      margin: 18px 0;
+      font-weight: 700;
+    }
+
+    footer {
+      background: #020617;
+      color: white;
+      padding: 35px 0 22px;
+      margin-top: 60px;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .footer-content p {
+      color: #94a3b8;
+      font-size: 13px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 18px;
+    }
+
+    .footer-links a {
+      color: #94a3b8;
+      font-size: 13px;
+    }
+
+    @media (max-width: 800px) {
+      .calculator-layout {
+        grid-template-columns: 1fr;
+      }
+
+      nav {
+        display: none;
+      }
+    }
+
+    @media (max-width: 500px) {
+      .card,
+      .result-card,
+      .info-card {
+        padding: 21px;
+      }
+
+      .page {
+        padding-top: 35px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="container nav">
+
+    <a href="index.html" class="logo">
+      <div class="logo-mark">J</div>
+      <span>Joblish</span>
+    </a>
+
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="#calculator">Calculator</a>
+      <a href="#guide">Guide</a>
+    </nav>
+
+  </div>
+</header>
+
+
+<main class="page">
+
+  <div class="container">
+
+    <div class="breadcrumb">
+      <a href="index.html">Joblish</a>
+      &nbsp;›&nbsp;
+      Job Tools
+      &nbsp;›&nbsp;
+      Notice Period Calculator
+    </div>
+
+
+    <div class="hero">
+
+      <div class="badge">
+        Free job calculator
+      </div>
+
+      <h1>
+        Notice Period Calculator
+      </h1>
+
+      <p>
+        Calculate your expected last working day based on your resignation
+        date and notice period.
+      </p>
+
+    </div>
+
+
+    <div class="calculator-layout" id="calculator">
+
+
+      <div class="card">
+
+        <h2>Enter your details</h2>
+
+        <p class="card-subtitle">
+          Enter the date you submit your resignation and your notice period.
+        </p>
+
+
+        <div class="form-group">
+
+          <label for="resignationDate">
+            Resignation Date
+          </label>
+
+          <input
+            id="resignationDate"
+            type="date"
+          >
+
+          <div class="help">
+            Select the date on which your resignation is submitted.
+          </div>
+
+        </div>
+
+
+        <div class="form-group">
+
+          <label for="noticePeriod">
+            Notice Period
+          </label>
+
+          <input
+            id="noticePeriod"
+            type="number"
+            min="0"
+            step="1"
+            value="30"
+            placeholder="Example: 30"
+          >
+
+          <div class="help">
+            Enter the number of calendar days in your notice period.
+          </div>
+
+        </div>
+
+
+        <button
+          class="calculate-button"
+          onclick="calculateNoticePeriod()"
+        >
+          Calculate Last Working Day
+        </button>
+
+      </div>
+
+
+      <div class="result-card">
+
+        <h2>Your result</h2>
+
+        <p>
+          The date below is calculated using calendar days.
+        </p>
+
+
+        <div class="main-result">
+
+          <span>
+            Expected Last Working Day
+          </span>
+
+          <strong id="lastWorkingDay">
+            —
+          </strong>
+
+        </div>
+
+
+        <div class="result-grid">
+
+          <div class="result-row">
+            <span>Resignation Date</span>
+            <span id="resultResignation">—</span>
+          </div>
+
+          <div class="result-row">
+            <span>Notice Period</span>
+            <span id="resultNotice">0 days</span>
+          </div>
+
+          <div class="result-row">
+            <span>Next Calendar Day</span>
+            <span id="resultNextDay">—</span>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <section class="info-section" id="guide">
+
+      <div class="info-card">
+
+        <h2>
+          How Notice Period Calculation Works
+        </h2>
+
+        <p>
+          A notice period is the amount of time an employee is generally
+          expected to continue working after resigning, subject to the
+          employment agreement and employer policy.
+        </p>
+
+        <h3>
+          Example
+        </h3>
+
+        <p>
+          If you submit your resignation on 1 August and your notice period
+          is 30 calendar days, the calculator adds 30 calendar days to the
+          resignation date.
+        </p>
+
+        <div class="formula">
+          Expected Last Working Day =
+          Resignation Date + Notice Period
+        </div>
+
+        <h3>
+          Important
+        </h3>
+
+        <p>
+          Actual relieving dates can differ. Employers may count the
+          resignation date differently, exclude weekends or holidays,
+          require a specific notice process, or approve an earlier release.
+          Always check your employment agreement and HR policy.
+        </p>
+
+      </div>
+
+    </section>
+
+  </div>
+
+</main>
+
+
+<footer>
+
+  <div class="container">
+
+    <div class="footer-content">
+
+      <p>
+        © 2026 Joblish. Free career tools for job seekers.
+      </p>
+
+      <div class="footer-links">
+        <a href="index.html">Home</a>
+        <a href="index.html#tools">Tools</a>
+        <a href="index.html#guides">Guides</a>
+      </div>
+
+    </div>
+
+  </div>
+
+</footer>
+
+
+<script>
+
+  function formatDate(date) {
+
+    return new Intl.DateTimeFormat("en-IN", {
+      day: "2-digit",
+      month: "long",
+      year: "numeric"
+    }).format(date);
+
+  }
+
+
+  function calculateNoticePeriod() {
+
+    const dateInput =
+      document.getElementById("resignationDate").value;
+
+    const noticePeriod =
+      Number(document.getElementById("noticePeriod").value);
+
+
+    if (!dateInput) {
+
+      alert("Please select your resignation date.");
+
+      return;
+
+    }
+
+
+    if (!Number.isFinite(noticePeriod) || noticePeriod < 0) {
+
+      alert("Please enter a valid notice period.");
+
+      return;
+
+    }
+
+
+    const parts = dateInput.split("-");
+
+    const resignationDate =
+      new Date(
+        Number(parts[0]),
+        Number(parts[1]) - 1,
+        Number(parts[2])
+      );
+
+
+    const lastWorkingDay =
+      new Date(resignationDate);
+
+    lastWorkingDay.setDate(
+      lastWorkingDay.getDate() + noticePeriod
+    );
+
+
+    const nextCalendarDay =
+      new Date(resignationDate);
+
+    nextCalendarDay.setDate(
+      nextCalendarDay.getDate() + 1
+    );
+
+
+    document.getElementById("lastWorkingDay").textContent =
+      formatDate(lastWorkingDay);
+
+
+    document.getElementById("resultResignation").textContent =
+      formatDate(resignationDate);
+
+
+    document.getElementById("resultNotice").textContent =
+      noticePeriod + " days";
+
+
+    document.getElementById("resultNextDay").textContent =
+      formatDate(nextCalendarDay);
+
+  }
+
+
+  const today =
+    new Date();
+
+  const localDate =
+    today.getFullYear() +
+    "-" +
+    String(today.getMonth() + 1).padStart(2, "0") +
+    "-" +
+    String(today.getDate()).padStart(2, "0");
+
+
+  document.getElementById("resignationDate").value =
+    localDate;
+
+
+  calculateNoticePeriod();
+
+</script>
+
+</body>
+</html>
