@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>CTC to In-Hand Salary Calculator India | Joblish</title>
+
+  <meta
+    name="description"
+    content="Use the free Joblish CTC to in-hand salary calculator to estimate your monthly take-home salary from your annual CTC."
+  >
+
+  <meta
+    name="keywords"
+    content="CTC calculator, CTC to in hand salary calculator, salary calculator India, take home salary calculator, monthly salary calculator"
+  >
+
+  <meta name="author" content="Joblish">
+
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --text: #111827;
+      --muted: #64748b;
+      --background: #f8fafc;
+      --card: #ffffff;
+      --border: #e2e8f0;
+      --soft-blue: #eff6ff;
+      --dark: #0f172a;
+      --success: #15803d;
+      --warning-bg: #fffbeb;
+      --warning-border: #fde68a;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Arial,
+        sans-serif;
+
+      background: var(--background);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      width: min(1100px, 92%);
+      margin: 0 auto;
+    }
+
+    /* HEADER */
+
+    header {
+      background: rgba(255, 255, 255, 0.97);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(10px);
+    }
+
+    .nav {
+      min-height: 72px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 23px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+
+    .logo-mark {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      border-radius: 11px;
+      background: var(--primary);
+      color: white;
+      font-weight: 800;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+    }
+
+    nav a {
+      font-size: 15px;
+      font-weight: 600;
+      color: #475569;
+    }
+
+    nav a:hover {
+      color: var(--primary);
+    }
+
+    /* PAGE */
+
+    .page {
+      padding: 55px 0 80px;
+    }
+
+    .breadcrumb {
+      margin-bottom: 25px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    .breadcrumb a {
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    .hero {
+      text-align: center;
+      max-width: 760px;
+      margin: 0 auto 45px;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 7px 13px;
+      border: 1px solid #dbeafe;
+      background: var(--soft-blue);
+      color: var(--primary-dark);
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 17px;
+    }
+
+    h1 {
+      font-size: clamp(34px, 5vw, 52px);
+      line-height: 1.08;
+      letter-spacing: -1.8px;
+      color: var(--dark);
+      margin-bottom: 15px;
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: 17px;
+    }
+
+    /* CALCULATOR */
+
+    .calculator-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+      align-items: start;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 28px;
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.05);
+    }
+
+    .card h2 {
+      font-size: 22px;
+      margin-bottom: 7px;
+    }
+
+    .card-subtitle {
+      color: var(--muted);
+      font-size: 14px;
+      margin-bottom: 25px;
+    }
+
+    .form-group {
+      margin-bottom: 18px;
+    }
+
+    label {
+      display: block;
+      font-weight: 700;
+      font-size: 14px;
+      margin-bottom: 7px;
+    }
+
+    .help {
+      color: var(--muted);
+      font-size: 12px;
+      margin-top: 5px;
+    }
+
+    .input-wrapper {
+      position: relative;
+    }
+
+    .currency {
+      position: absolute;
+      left: 13px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #64748b;
+      font-weight: 700;
+    }
+
+    input {
+      width: 100%;
+      padding: 13px 14px 13px 34px;
+      border: 1px solid #cbd5e1;
+      border-radius: 10px;
+      font-size: 15px;
+      outline: none;
+      background: white;
+      transition: 0.2s ease;
+    }
+
+    input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    }
+
+    .calculate-button {
+      width: 100%;
+      border: none;
+      background: var(--primary);
+      color: white;
+      padding: 14px 18px;
+      border-radius: 10px;
+      font-size: 16px;
+      font-weight: 800;
+      cursor: pointer;
+      transition: 0.2s ease;
+      margin-top: 8px;
+    }
+
+    .calculate-button:hover {
+      background: var(--primary-dark);
+      transform: translateY(-1px);
+    }
+
+    /* RESULT */
+
+    .result-card {
+      background: var(--dark);
+      color: white;
+      border-radius: 18px;
+      padding: 30px;
+      box-shadow: 0 12px 30px rgba(15, 23, 42, 0.12);
+    }
+
+    .result-card h2 {
+      font-size: 22px;
+      margin-bottom: 8px;
+    }
+
+    .result-card > p {
+      color: #cbd5e1;
+      font-size: 14px;
+      margin-bottom: 28px;
+    }
+
+    .main-result {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      padding: 25px;
+      margin-bottom: 22px;
+      text-align: center;
+    }
+
+    .main-result span {
+      display: block;
+      color: #cbd5e1;
+      font-size: 14px;
+      margin-bottom: 7px;
+    }
+
+    .main-result strong {
+      font-size: clamp(34px, 5vw, 48px);
+      line-height: 1;
+      color: white;
+    }
+
+    .result-grid {
+      display: grid;
+      gap: 1px;
+      background: rgba(255, 255, 255, 0.12);
+      border-radius: 13px;
+      overflow: hidden;
+      margin-bottom: 22px;
+    }
+
+    .result-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      background: #111c30;
+      padding: 14px 16px;
+      font-size: 14px;
+    }
+
+    .result-row span:first-child {
+      color: #cbd5e1;
+    }
+
+    .result-row span:last-child {
+      font-weight: 700;
+      text-align: right;
+    }
+
+    .note {
+      padding: 13px 15px;
+      border-radius: 10px;
+      background: var(--warning-bg);
+      border: 1px solid var(--warning-border);
+      color: #78350f;
+      font-size: 12px;
+      line-height: 1.5;
+    }
+
+    /* INFO */
+
+    .info-section {
+      margin-top: 45px;
+    }
+
+    .info-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 30px;
+    }
+
+    .info-card h2 {
+      font-size: 27px;
+      margin-bottom: 14px;
+    }
+
+    .info-card h3 {
+      font-size: 19px;
+      margin: 25px 0 8px;
+    }
+
+    .info-card p {
+      color: #475569;
+      margin-bottom: 12px;
+    }
+
+    .formula {
+      background: #f1f5f9;
+      border-radius: 10px;
+      padding: 16px;
+      margin: 18px 0;
+      font-weight: 700;
+      overflow-x: auto;
+    }
+
+    ul {
+      padding-left: 20px;
+      color: #475569;
+    }
+
+    li {
+      margin-bottom: 7px;
+    }
+
+    /* FOOTER */
+
+    footer {
+      background: #020617;
+      color: white;
+      padding: 35px 0 22px;
+      margin-top: 60px;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .footer-content p {
+      color: #94a3b8;
+      font-size: 13px;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 18px;
+    }
+
+    .footer-links a {
+      color: #94a3b8;
+      font-size: 13px;
+    }
+
+    .footer-links a:hover {
+      color: white;
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 800px) {
+      .calculator-layout {
+        grid-template-columns: 1fr;
+      }
+
+      nav a {
+        display: none;
+      }
+    }
+
+    @media (max-width: 500px) {
+      .card,
+      .result-card,
+      .info-card {
+        padding: 21px;
+      }
+
+      .page {
+        padding-top: 35px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+
+  <header>
+    <div class="container nav">
+
+      <a href="index.html" class="logo">
+        <div class="logo-mark">J</div>
+        <span>Joblish</span>
+      </a>
+
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="#calculator">Calculator</a>
+        <a href="#guide">Guide</a>
+      </nav>
+
+    </div>
+  </header>
+
+
+  <!-- MAIN -->
+
+  <main class="page">
+
+    <div class="container">
+
+      <div class="breadcrumb">
+        <a href="index.html">Joblish</a>
+        &nbsp;›&nbsp;
+        Salary Tools
+        &nbsp;›&nbsp;
+        CTC to In-Hand Calculator
+      </div>
+
+
+      <!-- HERO -->
+
+      <div class="hero">
+
+        <div class="badge">
+          Free salary calculator
+        </div>
+
+        <h1>
+          CTC to In-Hand Salary Calculator
+        </h1>
+
+        <p>
+          Estimate your monthly take-home salary from your annual CTC.
+          Adjust the major salary components to get a more useful estimate.
+        </p>
+
+      </div>
+
+
+      <!-- CALCULATOR -->
+
+      <div class="calculator-layout" id="calculator">
+
+
+        <!-- INPUT CARD -->
+
+        <div class="card">
+
+          <h2>Enter your salary details</h2>
+
+          <p class="card-subtitle">
+            Enter annual figures unless otherwise stated.
+          </p>
+
+
+          <div class="form-group">
+
+            <label for="ctc">
+              Annual CTC
+            </label>
+
+            <div class="input-wrapper">
+              <span class="currency">₹</span>
+
+              <input
+                id="ctc"
+                type="number"
+                min="0"
+                step="1000"
+                value="600000"
+                placeholder="Example: 600000"
+              >
+            </div>
+
+            <div class="help">
+              Example: ₹6,00,000 = ₹6 LPA
+            </div>
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="bonus">
+              Annual Bonus / Variable Pay
+            </label>
+
+            <div class="input-wrapper">
+              <span class="currency">₹</span>
+
+              <input
+                id="bonus"
+                type="number"
+                min="0"
+                step="1000"
+                value="0"
+                placeholder="Example: 50000"
+              >
+            </div>
+
+            <div class="help">
+              Bonus included in your CTC but not paid as fixed monthly salary.
+            </div>
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="employerPf">
+              Employer PF Contribution
+            </label>
+
+            <div class="input-wrapper">
+              <span class="currency">₹</span>
+
+              <input
+                id="employerPf"
+                type="number"
+                min="0"
+                step="1000"
+                value="0"
+                placeholder="Example: 21600"
+              >
+            </div>
+
+            <div class="help">
+              Employer contribution included within your CTC.
+            </div>
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="gratuity">
+              Gratuity / Other Employer Benefits
+            </label>
+
+            <div class="input-wrapper">
+              <span class="currency">₹</span>
+
+              <input
+                id="gratuity"
+                type="number"
+                min="0"
+                step="1000"
+                value="0"
+                placeholder="Example: 12000"
+              >
+            </div>
+
+            <div class="help">
+              Include components that are part of CTC but are not paid monthly.
+            </div>
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="employeePf">
+              Employee PF Deduction
+            </label>
+
+            <div class="input-wrapper">
+              <span class="currency">₹</span>
+
+              <input
+                id="employeePf"
+                type="number"
+                min="0"
+                step="500"
+                value="0"
+                placeholder="Example: 21600"
+              >
+            </div>
+
+            <div class="help">
+              Annual PF deducted from your salary.
+            </div>
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="professionalTax">
+              Professional Tax
+            </label>
+
+            <div class="input-wrapper">
+              <span class="currency">₹</span>
+
+              <input
+                id="professionalTax"
+                type="number"
+                min="0"
+                step="100"
+                value="2400"
+                placeholder="Example: 2400"
+              >
+            </div>
+
+            <div class="help">
+              Enter the annual amount applicable to you.
+            </div>
+
+          </div>
+
+
+          <div class="form-group">
+
+            <label for="incomeTax">
+              Estimated Annual Income Tax / TDS
+            </label>
+
+            <div class="input-wrapper">
+              <span class="currency">₹</span>
+
+              <input
+                id="incomeTax"
+                type="number"
+                min="0"
+                step="500"
+                value="0"
+                placeholder="Example: 30000"
+              >
+            </div>
+
+            <div class="help">
+              Enter your estimated annual tax/TDS. Tax varies based on your circumstances.
+            </div>
+
+          </div>
+
+
+          <button
+            class="calculate-button"
+            onclick="calculateSalary()"
+          >
+            Calculate In-Hand Salary
+          </button>
+
+        </div>
+
+
+        <!-- RESULT CARD -->
+
+        <div class="result-card">
+
+          <h2>Your estimated salary</h2>
+
+          <p>
+            This is an estimate based on the figures you entered.
+          </p>
+
+
+          <div class="main-result">
+
+            <span>
+              Estimated Monthly In-Hand
+            </span>
+
+            <strong id="monthlyTakeHome">
+              ₹0
+            </strong>
+
+          </div>
+
+
+          <div class="result-grid">
+
+            <div class="result-row">
+              <span>Annual CTC</span>
+              <span id="resultCtc">₹0</span>
+            </div>
+
+            <div class="result-row">
+              <span>Annual non-monthly components</span>
+              <span id="resultNonMonthly">₹0</span>
+            </div>
+
+            <div class="result-row">
+              <span>Annual employee deductions</span>
+              <span id="resultDeductions">₹0</span>
+            </div>
+
+            <div class="result-row">
+              <span>Estimated annual take-home</span>
+              <span id="annualTakeHome">₹0</span>
+            </div>
+
+          </div>
+
+
+          <div class="note">
+            Important: This is an estimate, not an official payroll calculation.
+            Actual take-home salary can differ because salary structures, tax,
+            PF rules, professional tax, benefits and employer policies vary.
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- GUIDE -->
+
+      <section class="info-section" id="guide">
+
+        <div class="info-card">
+
+          <h2>
+            How the CTC to In-Hand Calculator Works
+          </h2>
+
+          <p>
+            Your Cost to Company (CTC) is not necessarily the amount that
+            reaches your bank account each month.
+          </p>
+
+          <h3>
+            What is CTC?
+          </h3>
+
+          <p>
+            CTC represents the total annual cost an employer associates with
+            employing you. It can include salary, employer contributions,
+            bonuses, gratuity and other benefits.
+          </p>
+
+          <h3>
+            Why is in-hand salary lower?
+          </h3>
+
+          <p>
+            Some parts of CTC may not be paid as monthly cash salary.
+            Employee deductions can also reduce your monthly take-home amount.
+          </p>
+
+          <div class="formula">
+            Estimated Annual Take-Home =
+            CTC − Non-Monthly CTC Components − Employee Deductions
+          </div>
+
+          <div class="formula">
+            Estimated Monthly In-Hand =
+            Estimated Annual Take-Home ÷ 12
+          </div>
+
+          <h3>
+            Components that may affect your salary
+          </h3>
+
+          <ul>
+            <li>Employee provident fund deductions</li>
+            <li>Professional tax where applicable</li>
+            <li>Income tax / TDS</li>
+            <li>Variable pay or annual bonus</li>
+            <li>Employer PF contribution included in CTC</li>
+            <li>Gratuity and other employer benefits</li>
+            <li>Other deductions specified by your employer</li>
+          </ul>
+
+        </div>
+
+      </section>
+
+    </div>
+
+  </main>
+
+
+  <!-- FOOTER -->
+
+  <footer>
+
+    <div class="container">
+
+      <div class="footer-content">
+
+        <p>
+          © 2026 Joblish. Free career tools for job seekers.
+        </p>
+
+        <div class="footer-links">
+          <a href="index.html">Home</a>
+          <a href="index.html#tools">Tools</a>
+          <a href="index.html#guides">Guides</a>
+        </div>
+
+      </div>
+
+    </div>
+
+  </footer>
+
+
+  <!-- JAVASCRIPT -->
+
+  <script>
+
+    function formatCurrency(amount) {
+
+      return new Intl.NumberFormat("en-IN", {
+        style: "currency",
+        currency: "INR",
+        maximumFractionDigits: 0
+      }).format(Math.max(0, amount));
+
+    }
+
+
+    function getValue(id) {
+
+      const element = document.getElementById(id);
+
+      const value = Number(element.value);
+
+      if (!Number.isFinite(value) || value < 0) {
+        return 0;
+      }
+
+      return value;
+
+    }
+
+
+    function calculateSalary() {
+
+      const ctc = getValue("ctc");
+
+      const bonus = getValue("bonus");
+
+      const employerPf = getValue("employerPf");
+
+      const gratuity = getValue("gratuity");
+
+      const employeePf = getValue("employeePf");
+
+      const professionalTax = getValue("professionalTax");
+
+      const incomeTax = getValue("incomeTax");
+
+
+      const nonMonthlyComponents =
+        bonus +
+        employerPf +
+        gratuity;
+
+
+      const employeeDeductions =
+        employeePf +
+        professionalTax +
+        incomeTax;
+
+
+      let annualTakeHome =
+        ctc -
+        nonMonthlyComponents -
+        employeeDeductions;
+
+
+      /*
+        Prevent negative salary results if a user enters
+        deductions greater than the CTC.
+      */
+
+      annualTakeHome = Math.max(0, annualTakeHome);
+
+
+      const monthlyTakeHome =
+        annualTakeHome / 12;
+
+
+      document.getElementById("monthlyTakeHome").textContent =
+        formatCurrency(monthlyTakeHome);
+
+
+      document.getElementById("resultCtc").textContent =
+        formatCurrency(ctc);
+
+
+      document.getElementById("resultNonMonthly").textContent =
+        formatCurrency(nonMonthlyComponents);
+
+
+      document.getElementById("resultDeductions").textContent =
+        formatCurrency(employeeDeductions);
+
+
+      document.getElementById("annualTakeHome").textContent =
+        formatCurrency(annualTakeHome);
+
+    }
+
+
+    /*
+      Calculate automatically when the page loads.
+    */
+
+    calculateSalary();
+
+
+    /*
+      Recalculate whenever an input changes.
+    */
+
+    const inputIds = [
+      "ctc",
+      "bonus",
+      "employerPf",
+      "gratuity",
+      "employeePf",
+      "professionalTax",
+      "incomeTax"
+    ];
+
+
+    inputIds.forEach(function(id) {
+
+      document.getElementById(id).addEventListener(
+        "input",
+        calculateSalary
+      );
+
+    });
+
+  </script>
+
+</body>
+</html>
